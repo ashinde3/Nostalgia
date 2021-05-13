@@ -17,9 +17,13 @@ export default makeStyles({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    borderRadius: '15px',
+    borderRadius: '20px',
     height: '100%',
     position: 'relative',
+    transition: "transform 0.2s ease-in-out",
+    "&:hover": {
+      transform: "scale3d(1.05, 1.05, 1.05)", 
+    }
   },
   overlay: {
     position: 'absolute',
