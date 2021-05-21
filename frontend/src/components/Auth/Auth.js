@@ -5,11 +5,15 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Input from './Input';
 import {GoogleLogin} from 'react-google-login';
 import Icon from './icon';
+import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom';
 
 const Auth = () => {
     const classes = useStyles();
     const [showPassword,setShowPassword] = useState(false);
-    const [isSignup , setIsSignup] = useState(false)
+    const [isSignup , setIsSignup] = useState(false);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const handleSubmit = () => {
 
@@ -20,7 +24,18 @@ const Auth = () => {
     }
 
     const googleSuccess = async (res) => {
-        console.log(res);
+        const result = res?.profileObj;
+        const token = res?.tokenId;
+
+        try {
+            dispatch({
+                type: 'AUTH',
+                data: {result, token}
+            });
+            history.push('/');
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const googleFailure = () => {
