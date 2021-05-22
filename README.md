@@ -15,3 +15,7 @@ npm start
 ```commandline
 npm start
 ```
+## Features include:
+1. Create, Edit or Delete a post - By authorized user only
+2. Sign Up and Sign In
+3. Google OAuth to sign in using google
